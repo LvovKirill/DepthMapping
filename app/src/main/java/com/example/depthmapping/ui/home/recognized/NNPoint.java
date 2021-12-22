@@ -1,4 +1,4 @@
-package com.example.depthmapping.ui.home;
+package com.example.depthmapping.ui.home.recognized;
 
 public class NNPoint {
     String type;

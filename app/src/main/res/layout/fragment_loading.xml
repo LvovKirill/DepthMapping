@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.LoadingFragment">
+
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginHorizontal="20dp"-->
+<!--        android:layout_gravity="center">-->
+<!--&lt;!&ndash;    <com.wang.avi.AVLoadingIndicatorView&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/avi"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="30dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_height="30dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:visibility="visible"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:indicatorName="BallGridPulseIndicator"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:indicatorColor="@color/purple_500"/>&ndash;&gt;-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:layout_gravity="center">-->
+
+<!--        <com.daimajia.numberprogressbar.NumberProgressBar-->
+<!--            android:id="@+id/progress"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="wrap_content" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/text"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="отправка данных..."-->
+<!--                android:layout_gravity="center"-->
+<!--                android:gravity="center"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="15dp"/>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            app:cardCornerRadius="5dp">-->
+<!--        <ImageView-->
+<!--            android:id="@+id/image"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@drawable/text_test_img"/>-->
+
+<!--        </androidx.cardview.widget.CardView>-->
+
+
+<!--    </LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avi"
+            android:layout_width="40dp"
+        android:layout_height="40dp"
+            android:layout_gravity="center"
+        android:visibility="visible"
+        app:indicatorName="BallGridPulseIndicator"
+        app:indicatorColor="@color/purple_500"/>
+
+
+                    <TextView
+                        android:id="@+id/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="отправка данных..."
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"/>
+
+
+
+    </LinearLayout>
+
+            </FrameLayout>

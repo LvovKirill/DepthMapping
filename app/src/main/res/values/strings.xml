@@ -17,4 +17,13 @@
 Мы предоставляем этот параметр в качестве компромисса между временем выполнения и разрешением. Использование этого сокращает время выполнения, если требуется только результат до определенного мегапикселя.
 
 Этот параметр устанавливает ограничение на больший размер результата в пикселях (при сохранении пропорций). Например, для генерации результатов с большим размером до 2000 пикселей используйте следующее:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="detective_objects">Обнаруженые объекты</string>
+    <string name="history">история</string>
+    <string name="segmentation">Сегментация</string>
+    <string name="recognized_object">распознание объектов</string>
+    <string name="depth_map">карта глубины</string>
+    <string name="type_neironet">Тип нейронной сети</string>
+    <string name="secmentation_hint">Выберите размерность сегментации. Размерность сегментации повлияет на качества обработки. Чем больше сегментация, тем лучше качество.</string>
 </resources>

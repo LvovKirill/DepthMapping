@@ -12,8 +12,11 @@ package com.example.depthmapping;
         import android.widget.TextView;
 
         import androidx.appcompat.app.AppCompatActivity;
+        import androidx.fragment.app.Fragment;
+        import androidx.fragment.app.FragmentTransaction;
 
         import com.example.depthmapping.databinding.FragmentHomeBinding;
+        import com.example.depthmapping.ui.LoadingFragment;
         import com.example.depthmapping.ui.home.HomeFragment;
 
         import org.apache.sshd.client.SshClient;
@@ -78,6 +81,7 @@ public class SshConection{
             public void run() {
                 try {
 
+
                     try (ClientSession session = client.connect(username, host, port).verify(10000).getSession()) {
                         session.addPasswordIdentity(password);
                         session.auth().verify(150000);
@@ -89,7 +93,6 @@ public class SshConection{
 
                         ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
                         channel.setOut(responseStream);
-
 
                         channel.open().verify(180, TimeUnit.SECONDS);
                         try (OutputStream pipedIn = channel.getInvertedIn()) {
