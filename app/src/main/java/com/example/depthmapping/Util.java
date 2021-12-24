@@ -7,9 +7,13 @@ import android.graphics.Matrix;
 import android.util.Base64;
 import android.util.Log;
 
+import com.example.depthmapping.ui.home.NNPoint;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Util {
 
@@ -49,5 +53,11 @@ public class Util {
         Bitmap resizedBitmap = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, false);
         bm.recycle();
         return resizedBitmap;
+    }
+
+    public static List<NNPoint> listNNPoint = new ArrayList<>();
+
+    public static void saveListNNPoint(List<NNPoint> list){
+        listNNPoint=list;
     }
 }

@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.example.depthmapping.classifier.ImageClassifier;
@@ -13,31 +14,62 @@ import com.example.depthmapping.classifier.ImageClassifier;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
-@Entity
+@Entity(tableName = "processedImage")
 public class ProcessedImage {
     @PrimaryKey(autoGenerate = true)
     int id;
+    String originImage;
     String image;
+    String smalImage;
     String date;
 //    List<String> recognitionList;
 
-    public ProcessedImage(String image, String date) {
-        this.id = id;
+    @Ignore
+    public ProcessedImage(String originImage, String image, String date) {
         this.image = image;
+        this.originImage = originImage;
+        this.smalImage = getBase64String(resizeImage(getBitmap()));
         this.date = date;
     }
 
-//    public ProcessedImage(int id, Bitmap image, String date, List<String> recognitionList) {
+    public ProcessedImage(int id, String originImage, String image, String date) {
+        this.id = id;
+        this.image = image;
+        this.originImage = originImage;
+        this.smalImage = getBase64String(resizeImage(getBitmap()));
+        this.date = date;
+    }
+
+    //    public ProcessedImage(int id, Bitmap image, String date, List<String> recognitionList) {
 //        this.id = id;
 //        this.image = getBase64String(image);
 //        this.date = date;
 //        this.recognitionList = recognitionList;
 //    }
 
-    public ProcessedImage(Bitmap image, String date) {
+    @Ignore
+    public ProcessedImage(String originImage, Bitmap image, String date) {
         this.id = id;
         this.image = getBase64String(image);
+        this.originImage = originImage;
+        this.smalImage = getBase64String(resizeImage(getBitmap()));
         this.date = date;
+    }
+
+    public String getOriginImage() {
+        return originImage;
+    }
+
+    public void setOriginImage(String originImage) {
+        this.originImage = originImage;
+    }
+
+    public String getSmalImage() {
+        return smalImage;
+    }
+
+    public void setSmalImage(String smalImage) {
+        this.smalImage = smalImage;
     }
 
     public int getId() {
@@ -65,14 +97,19 @@ public class ProcessedImage {
     }
 
 
-    public Bitmap convertToBitmap() throws IllegalArgumentException {
+    public Bitmap getBitmap() throws IllegalArgumentException {
         byte[] decodedBytes = Base64.decode( image.substring(image.indexOf(",") + 1), Base64.DEFAULT );
         return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
     }
 
-//    public Bitmap resizeImage(Bitmap image){
-//        Bitmap scaledImage = Bitmap.createScaledBitmap(image, image.getWidth()/3, image.getHeight()/3, )
-//    }
+    public Bitmap getSmallBitmap() throws IllegalArgumentException {
+        byte[] decodedBytes = Base64.decode( smalImage.substring(smalImage.indexOf(",") + 1), Base64.DEFAULT );
+        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+    }
+
+    public Bitmap resizeImage(Bitmap image){
+       return Bitmap.createScaledBitmap(image, image.getWidth()/3, image.getHeight()/3, false);
+    }
 
     String getBase64String(Bitmap bitmap) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

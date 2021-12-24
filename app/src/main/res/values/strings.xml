@@ -26,4 +26,5 @@
     <string name="depth_map">карта глубины</string>
     <string name="type_neironet">Тип нейронной сети</string>
     <string name="secmentation_hint">Выберите размерность сегментации. Размерность сегментации повлияет на качества обработки. Чем больше сегментация, тем лучше качество.</string>
+    <string name="origin">оригинал</string>
 </resources>

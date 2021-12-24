@@ -1,5 +1,6 @@
 package com.example.depthmapping.ui.home;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.depthmapping.DataBase.DataBase;
+import com.example.depthmapping.DataBase.ProcessedImage;
 import com.example.depthmapping.R;
 
 
@@ -20,33 +23,19 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 import com.example.depthmapping.Util;
 import com.example.depthmapping.classifier.ImageClassifier;
 import com.example.depthmapping.databinding.FragmentHomeBinding;
-import com.example.depthmapping.ui.LoadingFragment;
-import com.example.depthmapping.ui.home.recognized.NNPoint;
-import com.example.depthmapping.ui.home.recognized.NeiroNetAdapter;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.gson.annotations.SerializedName;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Body;
-import retrofit2.http.POST;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -171,60 +160,10 @@ public class HomeFragment extends Fragment {
                 ft.add(R.id.container, frag2);
                 ft.commit();
 
-//                callServer(Util.getBase64String(photo));
-
-
-
-//                SshConection sshConection = new SshConection("0.tcp.ngrok.io", 18099, "root", "nNDpvbhKMtDLO0PruRCp",
-//                        getActivity().getApplicationContext(), photo);
-
-
-//                Bitmap bitmap_out = sshConection.start();
-
-//                try {
-//                    TimeUnit.SECONDS.sleep(180);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//                binding.imageView.setImageBitmap(bitmap_out);
-
-//                while (true){
-//                    binding.imageView.setImageBitmap(bitmap);
-//                    if(bitmap!=null){break;}
-//                }
-
-//                if(bitmap_out==null) {
-//                    while (bitmap == null) {
-//                        binding.imageView.setImageBitmap(bitmap);
-//                    }
-//                }
-
-//                List<ImageClassifier.Recognition> predicitons = imageClassifier.recognizeImage(
-//                        photo, 0);
-//
-//                final List<NNPoint> predicitonsList = new ArrayList<>();
-//                for (ImageClassifier.Recognition recog : predicitons) {
-//                    predicitonsList.add(new NNPoint(recog.getName(), Float.toString(recog.getConfidence())));
-//                }
-
-
-//                LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-//                binding.recyclerView.setLayoutManager(mLayoutManager);
-//                NeiroNetAdapter adapter = new NeiroNetAdapter(getActivity(), predicitonsList);
-//                binding.recyclerView.setAdapter(adapter);
-//
-//                binding.recyclerView.setItemViewCacheSize(25);
-//                binding.recyclerView.setDrawingCacheEnabled(true);
-//                binding.recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
-
-
-//        Fragment frag2 = new LoadingFragment();
-//        FragmentTransaction ft = getFragmentManager().beginTransaction();
-//        ft.remove(frag2).commit();
 
     }
 

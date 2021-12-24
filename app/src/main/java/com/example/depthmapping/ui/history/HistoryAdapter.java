@@ -8,11 +8,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.depthmapping.DataBase.DataBase;
 import com.example.depthmapping.DataBase.ProcessedImage;
 import com.example.depthmapping.R;
 import com.example.depthmapping.Util;
+import com.example.depthmapping.ui.home.LoadingFragment;
+import com.example.depthmapping.ui.home.recognized.RecognizedImageFragment;
 
 import java.util.List;
 
@@ -20,15 +27,19 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
     private final LayoutInflater inflater;
     private final List<ProcessedImage> processedImageList;
+    Context context;
 
     HistoryAdapter(Context context, List<ProcessedImage> states) {
         this.processedImageList = states;
         this.inflater = LayoutInflater.from(context);
+        this.context = context;
     }
     @Override
     public HistoryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = inflater.inflate(R.layout.history_list_item, parent, false);
+
+
         return new HistoryAdapter.ViewHolder(view);
     }
 
@@ -36,9 +47,30 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     public void onBindViewHolder(HistoryAdapter.ViewHolder holder, int position) {
         ProcessedImage processedImage = processedImageList.get(position);
         holder.date.setText(processedImage.getDate());
+        holder.image.setImageBitmap(processedImage.getSmallBitmap());
 
 
-//        holder.image.setImageBitmap(processedImage.getBitmap());
+        ProcessedImage current = processedImageList.get(position);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = ((AppCompatActivity) holder.itemView.getContext()).getSupportFragmentManager();
+                RecognizedImageFragment myFragment = RecognizedImageFragment.newInstance(current.getImage(), current.getOriginImage(), "");
+                fragmentManager.beginTransaction().add(R.id.containerHistory, myFragment, "recFrag")
+                        .addToBackStack("recFrag")
+                        .commit();
+            }
+        });
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+
+                return false;
+            }
+        });
 
 //        HistoryAdapterAsyncTask catTask = new HistoryAdapterAsyncTask(holder.image, processedImage.getImage());
 //        catTask.execute();

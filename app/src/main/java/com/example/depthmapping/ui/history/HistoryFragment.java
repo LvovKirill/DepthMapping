@@ -11,12 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.room.Room;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.depthmapping.App;
+import com.example.depthmapping.DataBase.DataBase;
 import com.example.depthmapping.DataBase.ProcessedImage;
+import com.example.depthmapping.DataBase.ProcessedImageDao;
 import com.example.depthmapping.R;
 import com.example.depthmapping.databinding.HistoryFragmentBinding;
 
@@ -29,6 +33,8 @@ public class HistoryFragment extends Fragment {
     private HistoryViewModel mViewModel;
     HistoryFragmentBinding binding;
 
+//    DataBase db = DataBase.
+
     public static HistoryFragment newInstance() {
         return new HistoryFragment();
     }
@@ -39,8 +45,9 @@ public class HistoryFragment extends Fragment {
         binding = HistoryFragmentBinding.inflate(inflater, container, false);
 
 
-//        DataBase db = Room.databaseBuilder(getActivity(),DataBase.class, "populous-database").build();
-//        db.getProcessedImageDao().insertAll(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.mephi_test_image), "12.02.2021 11:35"));
+
+
+//       db.getProcessedImageDao().insertAll(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.mephi_test_image), "12.02.2021 11:35"));
 //        db.getProcessedImageDao().insertAll(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.mephi_test_image), "12.02.2021 11:35"));
 //        db.getProcessedImageDao().insertAll(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.mephi_test_image), "12.02.2021 11:35"));
 
@@ -88,15 +95,19 @@ public class HistoryFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.mephi_test_image), "12.02.2021 11:35"));
-            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.text_test_img), "12.02.2021 11:36"));
-            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.mephi_test_image), "12.02.2021 11:37"));
-            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.mephi_test_image), "12.02.2021 11:35"));
-            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.text_test_img), "12.02.2021 11:36"));
-            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.mephi_test_image), "12.02.2021 11:37"));
-            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.mephi_test_image), "12.02.2021 11:35"));
-            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.text_test_img), "12.02.2021 11:36"));
-            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.mephi_test_image), "12.02.2021 11:37"));
+//            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.mephi_test_image), "12.02.2021 11:35"));
+//            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.text_test_img), "12.02.2021 11:36"));
+//            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.mephi_test_image), "12.02.2021 11:37"));
+//            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.mephi_test_image), "12.02.2021 11:35"));
+//            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.text_test_img), "12.02.2021 11:36"));
+//            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.mephi_test_image), "12.02.2021 11:37"));
+//            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.mephi_test_image), "12.02.2021 11:35"));
+//            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.text_test_img), "12.02.2021 11:36"));
+//            listTest.add(new ProcessedImage(BitmapFactory.decodeResource(getResources(), R.drawable.mephi_test_image), "12.02.2021 11:37"));
+
+
+            listTest = DataBase.getDatabase(getActivity()).processedImageDao()
+                    .getAllProcessedImage();
 
             return null;
         }
@@ -125,5 +136,8 @@ public class HistoryFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(HistoryViewModel.class);
     }
+
+
+
 
 }

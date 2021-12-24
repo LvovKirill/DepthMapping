@@ -22,10 +22,24 @@ public class SlideshowFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
-
+        slideshowViewModel = new ViewModelProvider(this).get(SlideshowViewModel.class);
         binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+
+        binding.nightTheme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getApplication().setTheme(R.style.Theme_AppCompat_DayNight);
+            }
+        });
+
+        binding.lightTheme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getApplication().setTheme(android.R.style.Theme_Holo);
+            }
+        });
+
+
         View root = binding.getRoot();
 
 

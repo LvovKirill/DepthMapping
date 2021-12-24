@@ -16,10 +16,8 @@ public class HistoryViewModel extends ViewModel {
 
     List<ProcessedImage> getHistory(Context context){
 
-        DataBase db = Room.databaseBuilder(context,DataBase.class, "populous-database").build();
 
-        List<ProcessedImage> list = db.getProcessedImageDao().getAllProcessedImage();
 
-        return list;
+        return null;
     }
 }

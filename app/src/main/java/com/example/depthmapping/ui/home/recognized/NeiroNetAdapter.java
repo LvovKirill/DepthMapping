@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.depthmapping.R;
+import com.example.depthmapping.ui.home.NNPoint;
 
 import java.util.List;
 

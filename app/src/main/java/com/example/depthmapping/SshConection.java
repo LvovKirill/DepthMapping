@@ -2,21 +2,12 @@ package com.example.depthmapping;
 
         import android.annotation.SuppressLint;
         import android.content.Context;
-        import android.content.Intent;
         import android.graphics.Bitmap;
         import android.graphics.BitmapFactory;
         import android.graphics.Matrix;
-        import android.os.Bundle;
         import android.util.Base64;
         import android.util.Log;
-        import android.widget.TextView;
 
-        import androidx.appcompat.app.AppCompatActivity;
-        import androidx.fragment.app.Fragment;
-        import androidx.fragment.app.FragmentTransaction;
-
-        import com.example.depthmapping.databinding.FragmentHomeBinding;
-        import com.example.depthmapping.ui.LoadingFragment;
         import com.example.depthmapping.ui.home.HomeFragment;
 
         import org.apache.sshd.client.SshClient;

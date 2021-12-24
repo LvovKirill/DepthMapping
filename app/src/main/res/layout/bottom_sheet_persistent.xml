@@ -32,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:buttonTint="@color/main"
             android:text="@string/depth_map"
             android:checked="true"
             android:textSize="15dp"/>
@@ -41,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="@string/recognized_object"
+            android:buttonTint="@color/main"
             android:checked="true"
             android:textSize="15dp"/>
 

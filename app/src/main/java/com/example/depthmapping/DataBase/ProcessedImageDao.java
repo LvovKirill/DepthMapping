@@ -15,15 +15,24 @@ public interface ProcessedImageDao {
         @Insert
         void insertAll(ProcessedImage processedImages);
 
-        // Удаление Person из бд
+        @Insert
+        void insert(ProcessedImage processedImage);
+
+        @Query("SELECT * FROM processedImage")
+        List<ProcessedImage> getAllProcessedImageQuery();
+
+
         @Delete
         void delete(ProcessedImage processedImage);
 
-        // Получение всех Person из бд
+        @Query("DELETE FROM processedImage")
+        void deleteAll();
+
+
         @Query("SELECT * FROM processedImage")
         List<ProcessedImage> getAllProcessedImage();
 
-        // Получение всех Person из бд с условием
+
         @Query("SELECT * FROM processedImage WHERE id LIKE :id")
         List<ProcessedImage> getAllPeopleWithFavoriteColor(String id);
 
