@@ -20,6 +20,7 @@ import com.example.depthmapping.App;
 import com.example.depthmapping.DataBase.DataBase;
 import com.example.depthmapping.DataBase.ProcessedImage;
 import com.example.depthmapping.DataBase.ProcessedImageDao;
+import com.example.depthmapping.R;
 import com.example.depthmapping.Util;
 import com.example.depthmapping.classifier.ImageClassifier;
 import com.example.depthmapping.databinding.RecognizedImageFragmentBinding;
@@ -101,11 +102,11 @@ public class RecognizedImageFragment extends Fragment {
                 public void onClick(View v) {
                     if(imageFlag) {
                         binding.imageView.setImageBitmap(Util.convert(originImage));
-                        binding.originButton.setText("карта глубины");
+                        binding.originButton.setText(getString(R.string.depth_map));
                         imageFlag=false;
                     }else{
                         binding.imageView.setImageBitmap(Util.convert(image));
-                        binding.originButton.setText("оригинал");
+                        binding.originButton.setText(getString(R.string.origin));
                         imageFlag=true;
                     };
                 }

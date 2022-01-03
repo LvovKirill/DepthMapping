@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">DepthMapping</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">Tiefenkarte abrufen</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="take_picture">Foto machen</string>
+
+    <string name="neiro_net">Neural network</string>
+    <string name="instruction">Anweisung</string>
+    <string name="settings">Einstellungen</string>
+
+    <string name="text_test">Wir präsentieren eine eigenständige Implementierung unseres Merge-Operators. Dieses neue Repository ermöglicht es Ihnen, jedes Paar monokulare Tiefenschätzungen in unserer doppelten Schätzung zu verwenden. Dazu gehören die Verwendung separater Netzwerke zur Bewertung von Basis- und hochauflösenden Netzwerken, die Verwendung von Netzwerken, die von diesem Repository nicht unterstützt werden (z. B. Midas-v3) oder die Verwendung von manuell bearbeiteten Tiefenkarten für die künstlerische Verwendung. Es wird auch für Wissenschaftler nützlich sein, die CNN-basierte MDE entwickeln, um schnell eine doppelte Bewertung auf ihr eigenes Netzwerk anzuwenden. Für weitere Informationen, schauen Sie bitte hier. Verwenden Sie --max_res als Eingabeargument für run.py in Kombination mit --Final, um eine Beschränkung für die Auflösung der von unserer Methode generierten Ergebnisse festzulegen.
+
+Wir stellen diese Option als Kompromiss zwischen Laufzeit und Auflösung bereit. Wenn Sie dies verwenden, wird die Ausführungszeit verkürzt, wenn nur das Ergebnis auf ein bestimmtes Megapixel benötigt wird.
+
+Mit dieser Option wird die größere Größe des Ergebnisses in Pixeln begrenzt (wobei das Seitenverhältnis beibehalten wird). Um beispielsweise Ergebnisse mit einer Größe von bis zu 2000 Pixeln zu generieren, verwenden Sie Folgendes:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="detective_objects">Erkannte Objekte</string>
+    <string name="history">Verlauf</string>
+    <string name="segmentation">Segmentierung</string>
+    <string name="recognized_object">Objekte erkennen</string>
+    <string name="depth_map">Tiefenkarte</string>
+    <string name="type_neironet">Typ des neuronalen Netzwerks</string>
+    <string name="secmentation_hint">Wählen Sie die Dimension der Segmentierung. Die Dimension der Segmentierung wirkt sich auf die Verarbeitungsqualität aus. Je größer die Segmentierung ist, desto besser ist die Qualität.</string>
+    <string name="origin">original</string>
+    <string name="theme">Thema</string>
+    <string name="language">Sprache</string>
+    <string name="night_theme">dunkel</string>
+    <string name="light_theme">hell</string>
+    <string name="instraction_header">ANWEISUNG</string>
+    <string name="upload_image">Bild hochladen</string>
+</resources>

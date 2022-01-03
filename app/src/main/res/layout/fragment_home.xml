@@ -30,8 +30,8 @@
         android:layout_centerHorizontal="true"
         android:paddingHorizontal="30dp"
         android:paddingVertical="10dp"
-        android:text="нейросеть"
-        app:cornerRadius="10dp" />
+        app:cornerRadius="10dp"
+        android:text="@string/neiro_net" />
 
     <FrameLayout
         android:id="@+id/container"

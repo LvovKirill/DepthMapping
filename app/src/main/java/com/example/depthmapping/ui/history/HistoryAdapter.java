@@ -1,7 +1,9 @@
 package com.example.depthmapping.ui.history;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.depthmapping.DataBase.DataBase;
@@ -55,11 +59,17 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = ((AppCompatActivity) holder.itemView.getContext()).getSupportFragmentManager();
-                RecognizedImageFragment myFragment = RecognizedImageFragment.newInstance(current.getImage(), current.getOriginImage(), "");
-                fragmentManager.beginTransaction().add(R.id.containerHistory, myFragment, "recFrag")
-                        .addToBackStack("recFrag")
-                        .commit();
+//                FragmentManager fragmentManager = ((AppCompatActivity) holder.itemView.getContext()).getSupportFragmentManager();
+//                RecognizedImageFragment myFragment = RecognizedImageFragment.newInstance(current.getImage(), current.getOriginImage(), "");
+//                fragmentManager.beginTransaction().add(R.id.containerHistory, myFragment, "recFrag")
+//                        .addToBackStack("recFrag")
+//                        .commit();
+                NavController navController = Navigation.findNavController((Activity) context, R.id.nav_host_fragment_content_main);
+                Bundle bundle = new Bundle();
+                bundle.putString("image", current.getImage());
+                bundle.putString("originImage", current.getOriginImage());
+                bundle.putString("flag", "");
+                navController.navigate(R.id.nav_recognized, bundle);
             }
         });
 

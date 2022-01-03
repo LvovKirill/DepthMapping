@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cornerRadius="10dp"
-            android:text="загрузить изображение"
+            android:text="@string/upload_image"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/dimen10"/>
 

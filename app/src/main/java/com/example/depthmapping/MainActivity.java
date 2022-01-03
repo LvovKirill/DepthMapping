@@ -1,6 +1,8 @@
 package com.example.depthmapping;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -9,6 +11,7 @@ import com.example.depthmapping.DataBase.DataBase;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
@@ -22,6 +25,7 @@ import androidx.room.Room;
 import com.example.depthmapping.databinding.ActivityMainBinding;
 
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,18 +39,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        SharedPreferences prefs= getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE);
 
-
+        Locale localeRu = new Locale(prefs.getString("lang", "ru"));
+        Locale.setDefault(localeRu);
+        Configuration configurationRu = new Configuration();
+        configurationRu.locale = localeRu;
+        getResources().updateConfiguration(configurationRu, null);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+        if(prefs.getString("theme", "light").equals("light")) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }else{ AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);}
 
         setSupportActionBar(binding.appBarMain.toolbar);
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_history, R.id.nav_slideshow)
                 .setDrawerLayout(drawer)
@@ -58,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -94,4 +105,9 @@ public class MainActivity extends AppCompatActivity {
         public void onBackPressed();
     }
 
+    @Override
+    public void recreate() {
+        super.recreate();
+        overridePendingTransition(R.anim.alpha, R.anim.alpha);
+    }
 }

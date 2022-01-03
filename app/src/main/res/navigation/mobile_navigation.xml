@@ -8,8 +8,17 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.depthmapping.ui.home.HomeFragment"
-        android:label="@string/neiro_net"
-        tools:layout="@layout/fragment_home" />
+        android:label="@string/neiro_net" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_history"
+            app:destination="@id/nav_history" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_slideshow"
+            app:destination="@id/nav_slideshow" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_gallery"
+            app:destination="@id/nav_gallery" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -21,11 +30,23 @@
         android:id="@+id/nav_history"
         android:name="com.example.depthmapping.ui.history.HistoryFragment"
         android:label="@string/history"
-        tools:layout="@layout/history_fragment" />
+        tools:layout="@layout/history_fragment" >
+        <action
+            android:id="@+id/action_nav_history_to_nav_recognized"
+            app:destination="@id/nav_recognized" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.depthmapping.ui.slideshow.SlideshowFragment"
         android:label="@string/settings"
         tools:layout="@layout/fragment_slideshow" />
+
+
+    <fragment
+        android:id="@+id/nav_recognized"
+        android:name="com.example.depthmapping.ui.home.recognized.RecognizedImageFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/recognized_image_fragment" />
+
 </navigation>
