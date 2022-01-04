@@ -27,7 +27,14 @@ import com.example.depthmapping.databinding.RecognizedImageFragmentBinding;
 import com.example.depthmapping.ui.home.HomeViewModel;
 import com.example.depthmapping.ui.home.NNPoint;
 
+import org.tensorflow.lite.DataType;
+import org.tensorflow.lite.support.common.FileUtil;
+import org.tensorflow.lite.support.image.ImageProcessor;
+import org.tensorflow.lite.support.image.TensorImage;
+import org.tensorflow.lite.support.image.ops.ResizeOp;
+
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -79,7 +86,11 @@ public class RecognizedImageFragment extends Fragment {
             homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
             binding = RecognizedImageFragmentBinding.inflate(inflater, container, false);
 
-            initializeUIElements();
+            try {
+                initializeUIElements();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             View root = binding.getRoot();
             return root;
@@ -87,7 +98,7 @@ public class RecognizedImageFragment extends Fragment {
 
 
 
-        private void initializeUIElements() {
+        private void initializeUIElements() throws IOException {
 
             try {
                 imageClassifier = new ImageClassifier(getActivity());
@@ -126,6 +137,29 @@ public class RecognizedImageFragment extends Fragment {
                         .insert(processedImage);
             }
 
+//            ObjectDetector.ObjectDetectorOptions options =
+//                    ObjectDetector.ObjectDetectorOptions.builder()
+//                            .setBaseOptions(BaseOptions.builder().useGpu().build())
+//                            .setMaxResults(1)
+//                            .build();
+//            ObjectDetector objectDetector =
+//                    ObjectDetector.createFromFileAndOptions(
+//                            getActivity(),   "ssd_mobilenet_v1_1_metadata_1", options);
+//
+//
+//            List<Detection> results = objectDetector.detect(resizePic(Util.convert(image)));
+//
+//            final List<NNPoint> predicitonsList = new ArrayList<>();
+//            for (Detection recog : results) {
+//                predicitonsList.add(new NNPoint(recog.getCategories().get(1).toString(), Float.toString(recog.getBoundingBox().centerX())));
+//            }
+//            Util.saveListNNPoint(predicitonsList);
+//
+//            System.out.print("______________________________________________________");
+//            System.out.print(results.toString());
+//            System.out.print("______________________________________________________");
+
+
             List<ImageClassifier.Recognition> predicitons = imageClassifier
                                 .recognizeImage(Util.convert(image), 0);
 
@@ -141,6 +175,17 @@ public class RecognizedImageFragment extends Fragment {
             binding.recyclerView.setAdapter(adapter);
 
         }
+
+    private TensorImage resizePic(Bitmap bp) {
+        ImageProcessor imageProcessor =
+                new ImageProcessor.Builder()
+                        .add(new ResizeOp(60, 60, ResizeOp.ResizeMethod.BILINEAR))
+                        .build();
+        TensorImage tImage = new TensorImage(DataType.FLOAT32);
+        tImage.load(bp);
+        tImage = imageProcessor.process(tImage);
+        return tImage;
+    }
 
 
 

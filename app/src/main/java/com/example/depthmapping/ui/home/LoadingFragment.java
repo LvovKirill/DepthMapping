@@ -88,7 +88,7 @@ public class LoadingFragment extends Fragment {
                 .readTimeout(300, TimeUnit.SECONDS)
                 .build();
 
-        String url = "https://41c6-34-76-184-184.ngrok.io";
+        String url = "https://b275-34-71-214-188.ngrok.io";
 
         RequestBody formBody = new FormBody.Builder()
                 .add("Name", "input.png")

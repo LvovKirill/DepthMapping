@@ -59,11 +59,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                FragmentManager fragmentManager = ((AppCompatActivity) holder.itemView.getContext()).getSupportFragmentManager();
-//                RecognizedImageFragment myFragment = RecognizedImageFragment.newInstance(current.getImage(), current.getOriginImage(), "");
-//                fragmentManager.beginTransaction().add(R.id.containerHistory, myFragment, "recFrag")
-//                        .addToBackStack("recFrag")
-//                        .commit();
+//
                 NavController navController = Navigation.findNavController((Activity) context, R.id.nav_host_fragment_content_main);
                 Bundle bundle = new Bundle();
                 bundle.putString("image", current.getImage());
